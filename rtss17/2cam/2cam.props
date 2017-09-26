@@ -1,0 +1,12 @@
+// Number of resource manager interventions
+R{"rm_calls"}max=? [ F rounds=max_frames ]
+
+// Number of dropped frames
+R{"dropped_frames"}min=? [ F rounds=max_frames ]
+
+// Total cost (constant * rm interventions + constant * dropped frames)
+R{"total_cost"}min=? [ F rounds=max_frames ]
+
+// Stability (trace does not change) event based
+Pmin=? [ F (G !("any_change_event")) ]
+
