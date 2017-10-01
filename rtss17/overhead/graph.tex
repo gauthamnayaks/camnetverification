@@ -1,0 +1,27 @@
+\documentclass{standalone}
+
+\usepackage{tikz, pgfplots}
+
+\begin{document}
+  
+  \begin{tikzpicture}
+    \begin{axis}[
+      /pgf/number format/.cd, use comma, 1000 sep={},
+      xlabel near ticks,
+      xlabel={number of cameras},
+      ylabel={overhead [ns]},
+      height=4cm,
+      width=7cm,
+      xmin=1,
+      xmax=100,
+      ymin=0,
+      xtick={1,10,20,30,40,50,60,70,80,90,100},
+      xticklabels={1,10,20,30,40,50,60,70,80,90,100},
+      grid=major,
+      grid style={dashed},
+    ]
+    \addplot[mark=none, thick, red] table[x index=0,y index=1, col sep=comma] {overhead.csv};
+    \end{axis}
+  \end{tikzpicture}
+  
+\end{document}
