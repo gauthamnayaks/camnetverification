@@ -36,8 +36,8 @@ following results.
 ['threshold_event', 'lambda1', 'lambda2', 'Result']
 ```
 
-These results mean that if the lenght of the trace is 20 frames,
-there are some sets of prameters (lambdas and threshold) for which
+These results mean that if the length of the trace is 20 frames,
+there are some sets of parameters (lambdas and threshold) for which
 the system has not settled. The sets are then reported. With a
 30 frames traces, on the contrary, for all the traces the stability
 property is verified.
