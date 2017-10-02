@@ -14,3 +14,13 @@ A PDF preprint is available.
 The folder contains the PRISM code to verify the system with two
 cameras.
 
+## Ncam
+
+The folder contains the PRISM code to verify the system with an
+arbitrary numbers of cameras, specified as a parameter in the run.sh
+script.
+
+## overhead
+
+The folder contains the C and latex code sources for the overhead
+experiment shown in the paper (Figure 6).
