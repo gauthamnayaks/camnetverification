@@ -11,7 +11,7 @@ The run script is what should be executed to perform the model
 checking. One line should be changed in the file, before being able
 to execute it correctly. The script assumes that PRISM has been
 installed in a specific location, which should be given in line 3
-as `PRISM_LOCATION=/PATH_TO_PRISM_FOLDER/prism/bin/prism`.
+as `PRISM_LOCATION=/PATH_TO_PRISM_FOLDER/prism/bin/`.
 A link to the binary file should be specified. Initially, the
 variable is set to `SET_ME`, to make sure that the execution fails
 and an informative message is printed at the command line.

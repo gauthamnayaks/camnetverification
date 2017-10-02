@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PRISM_LOCATION=SET_ME
+PRISM_BINARY=$PRISM_LOCATION/prism
 MODEL_FILE=2cam.prism
 PROPERTY_FILE=2cam.props
 PROPERTY_NUMBER=4
@@ -23,7 +24,7 @@ then
 fi
 
 # ----------------------------------- command
-$PRISM_LOCATION -explicit \
+$PRISM_BINARY -explicit \
 $MODEL_FILE $PROPERTY_FILE -prop $PROPERTY_NUMBER \
 -const threshold_event=$MIN_THRESHOLD:$STEP_THRESHOLD:$MAX_THRESHOLD,\
 lambda1=$MIN_LAMBDA:$STEP_LAMBDA:$MAX_LAMBDA,\
@@ -33,7 +34,7 @@ max_frames=20 \
 # ----------------------------------- command end
 
 # ----------------------------------- command
-$PRISM_LOCATION -explicit \
+$PRISM_BINARY -explicit \
 $MODEL_FILE $PROPERTY_FILE -prop $PROPERTY_NUMBER \
 -const threshold_event=$MIN_THRESHOLD:$STEP_THRESHOLD:$MAX_THRESHOLD,\
 lambda1=$MIN_LAMBDA:$STEP_LAMBDA:$MAX_LAMBDA,\
