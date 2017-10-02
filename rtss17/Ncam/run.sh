@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ----------------------------------- variables to set
-PRISM_FOLDER=SET_ME # example /home/user/prism/bin/
+PRISM_FOLDER=SET_ME # example /home/user/prism/bin
 NUM_CAMERAS=3
 # ----------------------------------- variables to set end
 
-PRISM_LOCATION=${PRISM_FOLDER}prism
-PRISMPP_LOCATION=${PRISM_FOLDER}prismpp
+PRISM_LOCATION=${PRISM_FOLDER}/prism
+PRISMPP_LOCATION=${PRISM_FOLDER}/prismpp
 MODEL_PP=Ncam.pp
 MODEL_FILE=Ncam.prism
 PROPERTY_FILE=Ncam.props
