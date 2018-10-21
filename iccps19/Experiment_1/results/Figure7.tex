@@ -1,0 +1,64 @@
+\documentclass{standalone}
+
+\usepackage{tikz, pgfplots, pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\begin{document}
+
+\pgfplotstableread[col sep = comma]{results_deterministic.csv}\deter
+\pgfplotstableread[col sep = comma]{results_probabilistic.csv}\prob
+\pgfplotstableread[col sep = comma]{results_nondeterministic.csv}\nondeter
+
+\begin{tikzpicture}[mark options={solid}]
+\begin{groupplot}[%
+	group style = {group size = 2 by 2, vertical sep = 0.5cm, horizontal sep = 2.5cm},
+	grid style = {dotted},
+	grid = major,
+	height = 3.5cm,
+	width = \columnwidth,
+	scaled x ticks = false,
+	scaled y ticks = false,
+	xmin = 1.8,
+	xmax = 8.2,
+	ylabel style = {align=center},
+	%y label style = {at={(axis description cs:-0.15,.5)}, anchor=south},
+	%x label style = {at={(axis description cs:0.5,-0.15)}, anchor=north},
+]
+
+\nextgroupplot[%
+ylabel = {Manager\\Interventions},
+% ---- legend
+legend columns = 4,
+legend style={draw=none, at={(1.25,1.1)}, anchor=south, font=\footnotesize},
+legend entries = { Deterministic, Probabilistic, $\max$ Nondeterministic, $\min$ Nondeterministic},
+]
+
+	\addplot[thick, blue, mark=o, dotted] table[x index = {0}, y index = {2}] {\deter};
+	\addplot[thick, black!30!red, mark=square, dotted] table[x index = {0}, y index = {2}] {\prob};
+	\addplot[thick, black!70!green, mark=triangle, dashed] table[x index = {0}, y index = {1}] {\nondeter};
+	\addplot[thick, black!70!green, mark=triangle, dotted] table[x index = {0}, y index = {2}] {\nondeter};
+
+\nextgroupplot[ylabel = {Frames\\Dropped}]
+
+	\addplot[thick, blue, mark=o, dotted] table[x index = {0}, y index = {4}] {\deter};
+	\addplot[thick, black!30!red, mark=square, dotted] table[x index = {0}, y index = {4}] {\prob};
+	\addplot[thick, black!70!green, mark=triangle, dashed] table[x index = {0}, y index = {3}] {\nondeter};
+	\addplot[thick, black!70!green, mark=triangle, dotted] table[x index = {0}, y index = {4}] {\nondeter};
+
+\nextgroupplot[ylabel = {Frames Sent\\}, xlabel = {Number of Cameras, $n$}]
+
+	\addplot[thick, blue, mark=o, dotted] table[x index = {0}, y index = {6}] {\deter};
+	\addplot[thick, black!30!red, mark=square, dotted] table[x index = {0}, y index = {6}] {\prob};
+	\addplot[thick, black!70!green, mark=triangle, dashed] table[x index = {0}, y index = {5}] {\nondeter};
+	\addplot[thick, black!70!green, mark=triangle, dotted] table[x index = {0}, y index = {6}] {\nondeter};
+
+\nextgroupplot[ylabel = {Minimum\\Cost}, xlabel = {Number of Cameras, $n$}]
+
+	\addplot[thick, black!30!red, mark=square, dotted] table[x index = {0}, y index = {7}] {\prob};
+	\addplot[thick, black!70!green, mark=triangle, dotted] table[x index = {0}, y index = {7}] {\nondeter};
+  \addplot[thick, blue, mark=o, dotted] table[x index = {0}, y index = {7}] {\deter};
+
+\end{groupplot}
+\end{tikzpicture}
+
+\end{document}

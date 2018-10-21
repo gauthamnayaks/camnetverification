@@ -1,0 +1,60 @@
+\documentclass{standalone}
+
+\usepackage{tikz, pgfplots, pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\begin{document}
+
+\pgfplotstableread[col sep = comma]{results_collab.csv}\all
+
+\begin{tikzpicture}[mark options={solid}]
+\begin{groupplot}[%
+  group style = {group size = 2 by 2, vertical sep = 0.5cm, horizontal sep = 2.5cm},
+  grid style = {dotted},
+  grid = major,
+  height = 3.5cm,
+  width = \columnwidth,
+  scaled x ticks = false,
+  scaled y ticks = false,
+  xmin = 1.8,
+  xmax = 8.2,
+  ylabel style = {align=center},
+  %y label style = {at={(axis description cs:-0.15,.5)}, anchor=south},
+  %x label style = {at={(axis description cs:0.5,-0.15)}, anchor=north},
+]
+
+\nextgroupplot[%
+ylabel = {Manager\\Interventions},
+% ---- legend
+legend columns = 3,
+legend style={draw=none, at={(1.25,1.1)}, anchor=south, font=\footnotesize},
+legend entries = {Manager , Cameras, Collaboration (Manager + Cameras)},
+]
+
+  \addplot[thick, brown, mark=square, dotted] table[x index = {0}, y index = {1}] {\all};
+  \addplot[thick, orange, mark=triangle, dashed] table[x index = {0}, y index = {3}] {\all};
+  \addplot[thick, violet, mark=o, solid] table[x index = {0}, y index = {5}] {\all};
+
+\nextgroupplot[%
+  ylabel = {Frames\\Dropped}]
+
+  \addplot[thick, brown, mark=square, dotted] table[x index = {0}, y index = {8}] {\all};
+  \addplot[thick, orange, mark=triangle, dashed] table[x index = {0}, y index = {10}] {\all};
+  \addplot[thick, violet, mark=o, solid] table[x index = {0}, y index = {12}] {\all};
+
+\nextgroupplot[  ylabel = {Frames\\Sent}]
+
+  \addplot[thick, brown, mark=square, dotted] table[x index = {0}, y index = {13}] {\all};
+  \addplot[thick, orange, mark=triangle, dashed] table[x index = {0}, y index = {15}] {\all};
+  \addplot[thick, violet, mark=o, solid] table[x index = {0}, y index = {17}] {\all};
+
+\nextgroupplot[ylabel = {Minimum\\Cost}]
+
+  \addplot[thick, brown, mark=square, dotted] table[x index = {0}, y index = {19}] {\all};
+  \addplot[thick, orange, mark=triangle, dashed] table[x index = {0}, y index = {20}] {\all};
+  \addplot[thick, violet, mark=o, solid] table[x index = {0}, y index = {21}] {\all};
+
+\end{groupplot}
+\end{tikzpicture}
+
+\end{document}
