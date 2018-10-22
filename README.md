@@ -15,7 +15,7 @@ sources that we have used to verify model properties for the paper
 _Model Checking a Self-Adaptive Camera Network with Physical Disturbances_,
 by Gautham Nayak Seetanadi, Karl-Erik Årzén, and Martina Maggio, submitted to
 [International Conference on Cyber-Physical Systems 2019]
-(/http://iccps.acm.org/2019/?q=node/10).
+(http://iccps.acm.org/2019/?q=node/10).
 
 ## Further Questions
 
